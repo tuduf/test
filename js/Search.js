@@ -19,12 +19,7 @@ var Search = (function () {
         this.shell = document.createElement("div");
         this.inputSearch = document.createElement("input");
         this.inputSearch.placeholder = "Поиск по задачам";
-        try {
-            this.inputSearch.classList.add("form-control");
-        }
-        catch (e) {
-            this.inputSearch.className += " form-control";
-        }
+        addClass(this.inputSearch, "form-control");
         this.shell.id = "searchLine";
         this.inputSearch.addEventListener("keyup", function (ev) {
             if (ev.keyCode === 13) {
@@ -73,20 +68,10 @@ var Search = (function () {
         }
     };
     Search.prototype.attachSearchline = function () {
-        try {
-            this.shell.classList.remove("deattach");
-        }
-        catch (e) {
-            this.shell.className = "";
-        }
+        removeClass(this.shell, "deattach");
     };
     Search.prototype.deattachSearchline = function () {
-        try {
-            this.shell.classList.add("deattach");
-        }
-        catch (e) {
-            this.shell.className = " deattach";
-        }
+        addClass(this.shell, "deattach");
     };
     Search.prototype.createCloseButton = function () {
         var _this = this;
@@ -96,13 +81,8 @@ var Search = (function () {
         close.addEventListener("click", function (ev) {
             _this.hardClear();
         });
-        try {
-            close.classList.add("btn");
-            close.classList.add("btn-primary");
-        }
-        catch (e) {
-            close.className += " btn btn-primary";
-        }
+        addClass(close, "btn");
+        addClass(close, "btn-primary");
         return close;
     };
     Search.prototype.hardClear = function () {
@@ -122,31 +102,16 @@ var Search = (function () {
         up.addEventListener("click", function (ev) {
             _this.up();
         });
-        try {
-            up.classList.add("btn");
-        }
-        catch (e) {
-            up.className += " btn";
-        }
+        addClass(up, "btn");
         var down = document.createElement("input");
         down.type = "button";
         down.value = "\\/";
         down.addEventListener("click", function (ev) {
             _this.down();
         });
-        try {
-            down.classList.add("btn");
-        }
-        catch (e) {
-            down.className += " btn";
-        }
+        addClass(down, "btn");
         this.label = document.createElement("div");
-        try {
-            this.label.classList.add("labelSearch");
-        }
-        catch (e) {
-            this.label.className += " labelSearch";
-        }
+        addClass(this.label, "labelSearch");
         this.displayLabel();
         this.helperShell.appendChild(up);
         this.helperShell.appendChild(down);
@@ -159,32 +124,17 @@ var Search = (function () {
         this.label.textContent = (this.length === 0 ? "0" : (this.currentIndex + 1)) + " из " + this.length;
     };
     Search.prototype.displayHelperShell = function () {
-        try {
-            this.helperShell.classList.remove("hidden");
-        }
-        catch (e) {
-            this.helperShell.className = "";
-        }
+        removeClass(this.helperShell, "hidden");
     };
     Search.prototype.hideHelperShell = function () {
-        try {
-            this.helperShell.classList.add("hidden");
-        }
-        catch (e) {
-            this.helperShell.className += " hidden";
-        }
+        addClass(this.helperShell, "hidden");
     };
     Search.prototype.restore = function () {
         if (this.length > 0) {
             var tmpIndex = this.currentIndex;
             this.lastSearchText = "";
             this.search();
-            try {
-                this.searchItems[this.currentIndex].classList.remove("currentWrap");
-            }
-            catch (e) {
-                this.searchItems[this.currentIndex].className = " wrap";
-            }
+            removeClass(this.searchItems[this.currentIndex], "currentWrap");
             this.currentIndex = tmpIndex;
             this.goToIndex(this.currentIndex);
         }
@@ -201,12 +151,7 @@ var Search = (function () {
     Search.prototype.goToIndex = function (index) {
         if (this.length > 0) {
             try {
-                try {
-                    this.searchItems[this.currentIndex].classList.remove("currentWrap");
-                }
-                catch (e) {
-                    this.searchItems[this.currentIndex].className = " wrap";
-                }
+                removeClass(this.searchItems[this.currentIndex], "currentWrap");
                 if (index >= this.length) {
                     this.currentIndex = 0;
                 }
@@ -216,12 +161,7 @@ var Search = (function () {
                 else {
                     this.currentIndex = index;
                 }
-                try {
-                    this.searchItems[this.currentIndex].classList.add("currentWrap");
-                }
-                catch (e) {
-                    this.searchItems[this.currentIndex].className = " wrap currentWrap";
-                }
+                addClass(this.searchItems[this.currentIndex], "currentWrap");
                 this.displayLabel();
                 this.scrollToCurrent();
             }

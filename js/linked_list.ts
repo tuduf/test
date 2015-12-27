@@ -57,11 +57,19 @@ class LinkedList<T> implements Collection<T> {
             return this.lastNode;
         }
 
-
         var node = this.firstNode;
-        for (var i = 0; i < index; i++) {
-            node = node.next;
+
+        if (index > (this.length) / 2) {
+            for (var i = 0; i < index; i++) {
+                node = node.next;
+            }
+        } else {
+            node = this.lastNode;
+            for (var i = this.length - 1; i > index; i--) {
+                node = node.prev;
+            }
         }
+        
         return node;
     }
 

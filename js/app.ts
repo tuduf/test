@@ -44,7 +44,27 @@ window.addEventListener("blur", () => {
     } catch (e) { }
 });
 
-function escapeHtml(text) {
+function addClass(element: HTMLElement, className: string): void {
+    if (element !== null) {
+        try {
+            element.classList.add(className);
+        } catch(e) {
+            element.className += " " + className;
+        }
+    }
+}
+
+function removeClass(element: HTMLElement, className: string): void {
+    if (element !== null) {
+        try {
+            element.classList.remove(className);
+        } catch (e) {
+            element.className.replace(className, "");
+        }
+    }
+}
+
+function escapeHtml(text): string {
     var map = {
         '&': '&amp;',
         '<': '&lt;',
@@ -56,7 +76,7 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, function (m) { return map[m]; });
 }
 
-function unescapeHtml(text) {
+function unescapeHtml(text): string {
     var map = {
         '&amp;': '&',
         '&lt;': '<',

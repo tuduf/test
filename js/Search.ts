@@ -22,11 +22,8 @@
 
         this.inputSearch = document.createElement("input");
         this.inputSearch.placeholder = "Поиск по задачам";
-        try {
-            this.inputSearch.classList.add("form-control");
-        } catch (e) {
-            this.inputSearch.className += " form-control";
-        }
+
+        addClass(this.inputSearch, "form-control");
 
         this.shell.id = "searchLine";
 
@@ -91,19 +88,11 @@
     }
 
     public attachSearchline(): void {
-        try {
-            this.shell.classList.remove("deattach");
-        } catch (e) {
-            this.shell.className = "";
-        }
+        removeClass(this.shell, "deattach");
     }
 
     public deattachSearchline(): void {
-        try {
-            this.shell.classList.add("deattach");
-        } catch (e) {
-            this.shell.className = " deattach";
-        }
+        addClass(this.shell, "deattach");
     }
 
     private createCloseButton(): HTMLElement {
@@ -115,12 +104,8 @@
             this.hardClear();
         });
 
-        try {
-            close.classList.add("btn");
-            close.classList.add("btn-primary");
-        } catch (e) {
-            close.className += " btn btn-primary";
-        }
+        addClass(close, "btn");
+        addClass(close, "btn-primary");
 
         return close;
     }
@@ -144,11 +129,7 @@
             this.up();
         });
 
-        try {
-            up.classList.add("btn");
-        } catch (e) {
-            up.className += " btn";
-        }
+        addClass(up, "btn");
 
         var down = document.createElement("input");
         down.type = "button";
@@ -158,19 +139,11 @@
             this.down();
         });
 
-        try {
-            down.classList.add("btn");
-        } catch (e) {
-            down.className += " btn";
-        }
+        addClass(down, "btn");
 
         this.label = document.createElement("div");
 
-        try {
-            this.label.classList.add("labelSearch");
-        } catch (e) {
-            this.label.className += " labelSearch";
-        }
+        addClass(this.label, "labelSearch");
 
         this.displayLabel();
 
@@ -189,19 +162,11 @@
     }
 
     displayHelperShell(): void {
-        try {
-            this.helperShell.classList.remove("hidden");
-        } catch (e) {
-            this.helperShell.className = "";
-        }
+        removeClass(this.helperShell, "hidden");
     }
 
     hideHelperShell(): void {
-        try {
-            this.helperShell.classList.add("hidden");
-        } catch (e) {
-            this.helperShell.className += " hidden";
-        }
+        addClass(this.helperShell, "hidden");
     }
 
     public restore() {
@@ -213,11 +178,7 @@
             this.lastSearchText = "";
             this.search();
 
-            try {
-                this.searchItems[this.currentIndex].classList.remove("currentWrap");
-            } catch (e) {
-                this.searchItems[this.currentIndex].className = " wrap";
-            }
+            removeClass(this.searchItems[this.currentIndex], "currentWrap");
 
             this.currentIndex = tmpIndex;
             this.goToIndex(this.currentIndex);
@@ -239,11 +200,8 @@
     private goToIndex(index: number): void{
         if (this.length > 0) {
             try {
-                try {
-                    this.searchItems[this.currentIndex].classList.remove("currentWrap");
-                } catch (e) {
-                    this.searchItems[this.currentIndex].className = " wrap";
-                }
+
+                removeClass(this.searchItems[this.currentIndex], "currentWrap");
 
                 if (index >= this.length) {
                     this.currentIndex = 0;
@@ -253,11 +211,7 @@
                     this.currentIndex = index;
                 }
 
-                try {
-                    this.searchItems[this.currentIndex].classList.add("currentWrap");
-                } catch (e) {
-                    this.searchItems[this.currentIndex].className = " wrap currentWrap";
-                }
+                addClass(this.searchItems[this.currentIndex], "currentWrap");
 
                 this.displayLabel();
                 this.scrollToCurrent();

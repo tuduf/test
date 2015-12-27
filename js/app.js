@@ -39,6 +39,26 @@ window.addEventListener("blur", function () {
     }
     catch (e) { }
 });
+function addClass(element, className) {
+    if (element !== null) {
+        try {
+            element.classList.add(className);
+        }
+        catch (e) {
+            element.className += " " + className;
+        }
+    }
+}
+function removeClass(element, className) {
+    if (element !== null) {
+        try {
+            element.classList.remove(className);
+        }
+        catch (e) {
+            element.className.replace(className, "");
+        }
+    }
+}
 function escapeHtml(text) {
     var map = {
         '&': '&amp;',

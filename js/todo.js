@@ -103,13 +103,8 @@ var TODO = (function () {
         this.title = document.createElement("h1");
         this.title.id = "mainTitle";
         this.inputText = document.createElement("textarea");
-        try {
-            input.classList.add("btn");
-            input.classList.add("btn-info");
-        }
-        catch (e) {
-            input.className += " btn btn-info";
-        }
+        addClass(input, "btn");
+        addClass(input, "btn-info");
         try {
             this.inputText.classList.add("form-control");
         }
@@ -164,20 +159,10 @@ var TODO = (function () {
         this.table.appendChild(tr);
         if (this.itemTODOList.size() === 0) {
             this.title.textContent = "Нет заданий";
-            try {
-                this.table.classList.add("hidden");
-            }
-            catch (e) {
-                this.table.className += " hidden";
-            }
+            addClass(this.table, "hidden");
         }
         else {
-            try {
-                this.table.classList.remove("hidden");
-            }
-            catch (e) {
-                this.table.className = "";
-            }
+            removeClass(this.table, "hidden");
             this.title.textContent = "";
             this.itemTODOList.forEach(function (elem, index) {
                 var tr = document.createElement("tr");
@@ -188,12 +173,7 @@ var TODO = (function () {
                 var span = document.createElement("span");
                 span.id = "s" + index;
                 span.innerHTML = elem.subject;
-                try {
-                    span.classList.add("search");
-                }
-                catch (e) {
-                    span.className += " search";
-                }
+                addClass(span, "search");
                 span.addEventListener("click", function (ev) {
                     if (_this.listener !== null) {
                         _this.listener.change(null);
@@ -203,12 +183,7 @@ var TODO = (function () {
                     var td = document.getElementById("t" + id);
                     var ta = document.createElement("textarea");
                     var text = currentElem.innerHTML.replace(/<\/?[^>]+>/gi, '');
-                    try {
-                        ta.classList.add("form-control");
-                    }
-                    catch (e) {
-                        ta.className += " form-control";
-                    }
+                    addClass(ta, "form-control");
                     ta.value = unescapeHtml(text);
                     ta.id = "a" + id;
                     td.innerHTML = "";
@@ -232,12 +207,7 @@ var TODO = (function () {
                 checkbox.id = "c" + index;
                 if (elem.isdone) {
                     checkbox.checked = true;
-                    try {
-                        span.classList.add("done");
-                    }
-                    catch (e) {
-                        span.className += " done";
-                    }
+                    addClass(span, "done");
                 }
                 checkbox.addEventListener("change", function (ev) {
                     var currentElem = ev.currentTarget;
@@ -246,20 +216,10 @@ var TODO = (function () {
                     var elem = _this.itemTODOList.getItem(id);
                     elem.isdone = !elem.isdone;
                     if (elem.isdone) {
-                        try {
-                            span.classList.add("done");
-                        }
-                        catch (e) {
-                            span.className += " done";
-                        }
+                        addClass(span, "done");
                     }
                     else {
-                        try {
-                            span.classList.add("done");
-                        }
-                        catch (e) {
-                            span.className = "";
-                        }
+                        removeClass(span, "done");
                     }
                     _this.save();
                 });
