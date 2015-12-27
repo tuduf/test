@@ -44,9 +44,8 @@
         
         //is.content.forEach();
         var text = escapeHtml(this.inputSearch.value);
+        
         if (text == "") {
-            
-
             return;
         }
 
@@ -59,14 +58,15 @@
 
         this.displayHelperShell();
 
-        this.lastSearchText = this.inputSearch.value;
+        this.lastSearchText = escapeHtml(this.inputSearch.value);
 
         var i = 0;
 
         var searches: NodeListOf<HTMLElement> = <NodeListOf<HTMLElement>>this.todo.getMainTable().getElementsByClassName("search");
 
         for (var index = 0; index < searches.length; ++index) {
-            searches[index].innerHTML = searches[index].innerHTML.replace(new RegExp('(' + text + ')', 'gim'), (replacer: string, args): string => {
+            
+            searches[index].innerHTML = unescapeHtml(escapeHtml(searches[index].textContent).replace(new RegExp('(' + text + ')', 'gim'), (replacer: string, args): string => {
                 var classSpan: string = "wrap";
                 if (this.currentIndex == i) {
                     classSpan = "wrap";
@@ -74,7 +74,7 @@
                 this.length++;
                 i++;
                 return "<span class='" + classSpan + "'>" + replacer + "</span>";
-            });
+            }));
         }
 
         if (this.length > 0) {

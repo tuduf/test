@@ -14,6 +14,7 @@ var TODOListSaver = (function () {
             localStorage.setItem("item", JSON.stringify(list.toArray()));
         }
         catch (e) {
+            alert(123);
         }
     };
     TODOListSaver.prototype.load = function () {
@@ -184,7 +185,7 @@ var TODO = (function () {
                     var ta = document.createElement("textarea");
                     var text = currentElem.innerHTML.replace(/<\/?[^>]+>/gi, '');
                     addClass(ta, "form-control");
-                    ta.value = unescapeHtml(text);
+                    ta.value = unescapeHtml(_this.getItems().getItem(id).subject);
                     ta.id = "a" + id;
                     td.innerHTML = "";
                     ta.addEventListener("blur", function (ev) {
@@ -233,3 +234,4 @@ var TODO = (function () {
     };
     return TODO;
 })();
+//# sourceMappingURL=todo.js.map

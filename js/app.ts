@@ -50,6 +50,7 @@ function addClass(element: HTMLElement, className: string): void {
             element.classList.add(className);
         } catch(e) {
             element.className += " " + className;
+            
         }
     }
 }
@@ -59,7 +60,7 @@ function removeClass(element: HTMLElement, className: string): void {
         try {
             element.classList.remove(className);
         } catch (e) {
-            element.className.replace(className, "");
+            element.className = element.className.replace(className, "");
         }
     }
 }

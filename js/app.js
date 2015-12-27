@@ -55,7 +55,7 @@ function removeClass(element, className) {
             element.classList.remove(className);
         }
         catch (e) {
-            element.className.replace(className, "");
+            element.className = element.className.replace(className, "");
         }
     }
 }
@@ -79,3 +79,4 @@ function unescapeHtml(text) {
     };
     return text.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function (m) { return map[m]; });
 }
+//# sourceMappingURL=app.js.map

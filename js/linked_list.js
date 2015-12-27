@@ -1,3 +1,8 @@
+/*
+   @22.12.2015
+   @реализация примитивного двустороннего связанного списка.
+   @Степанов Николай
+*/
 var LinkedList = (function () {
     function LinkedList() {
         this.length = 0;
@@ -126,3 +131,4 @@ var LinkedList = (function () {
     };
     return LinkedList;
 })();
+//# sourceMappingURL=linked_list.js.map

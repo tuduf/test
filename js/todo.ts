@@ -19,7 +19,7 @@ class TODOListSaver {
         try {
             localStorage.setItem("item", JSON.stringify(list.toArray()));
         } catch (e) {
-
+            alert(123);
         }
     }
 
@@ -228,17 +228,17 @@ class TODO {
                     if (this.listener !== null) {
                         this.listener.change(null);
                     }
-                    let currentElem: HTMLElement = <HTMLElement>ev.currentTarget;
+                    var currentElem: HTMLElement = <HTMLElement>ev.currentTarget;
                     
                     var id: number = Number(currentElem.id.replace("s", ""));
                     var td: HTMLElement = document.getElementById("t" + id);
-                    let ta: HTMLTextAreaElement = document.createElement("textarea");
+                    var ta: HTMLTextAreaElement = document.createElement("textarea");
 
-                    let text: string = currentElem.innerHTML.replace(/<\/?[^>]+>/gi, '');
+                    var text: string = currentElem.innerHTML.replace(/<\/?[^>]+>/gi, '');
 
                     addClass(ta, "form-control");
 
-                    ta.value = unescapeHtml(text);
+                    ta.value = unescapeHtml(this.getItems().getItem(id).subject);
                     ta.id = "a" + id;
                     td.innerHTML = "";
                     ta.addEventListener("blur", (ev: FocusEvent) => {

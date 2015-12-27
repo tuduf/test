@@ -33,6 +33,7 @@ var Search = (function () {
     }
     Search.prototype.search = function () {
         var _this = this;
+        //is.content.forEach();
         var text = escapeHtml(this.inputSearch.value);
         if (text == "") {
             return;
@@ -45,11 +46,11 @@ var Search = (function () {
             this.clear();
         }
         this.displayHelperShell();
-        this.lastSearchText = this.inputSearch.value;
+        this.lastSearchText = escapeHtml(this.inputSearch.value);
         var i = 0;
         var searches = this.todo.getMainTable().getElementsByClassName("search");
         for (var index = 0; index < searches.length; ++index) {
-            searches[index].innerHTML = searches[index].innerHTML.replace(new RegExp('(' + text + ')', 'gim'), function (replacer, args) {
+            searches[index].innerHTML = unescapeHtml(escapeHtml(searches[index].textContent).replace(new RegExp('(' + text + ')', 'gim'), function (replacer, args) {
                 var classSpan = "wrap";
                 if (_this.currentIndex == i) {
                     classSpan = "wrap";
@@ -57,7 +58,7 @@ var Search = (function () {
                 _this.length++;
                 i++;
                 return "<span class='" + classSpan + "'>" + replacer + "</span>";
-            });
+            }));
         }
         if (this.length > 0) {
             this.searchItems = document.getElementsByClassName("wrap");
@@ -196,3 +197,4 @@ var Search = (function () {
     };
     return Search;
 })();
+//# sourceMappingURL=search.js.map
