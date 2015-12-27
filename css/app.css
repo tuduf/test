@@ -1,0 +1,107 @@
+﻿body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.done {
+    text-decoration:line-through;
+}
+
+.hidden {
+    display:none;
+}
+
+
+span.currentWrap {
+    background-color: orange !important;
+    font-style:italic;
+    border-left:1px solid white;
+}
+span.wrap {
+    background-color:#FAE629;
+    border-left:1px solid white;
+}
+
+#mainTable {
+    width:100%;
+}
+
+#mainTable tr td {
+    vertical-align:top;
+}
+
+#mainTable tr th:first-child {
+    text-align:center;
+}
+#mainTable tr td:first-child{
+    width:100px;
+    text-align:center;
+}
+
+#mainTable tr td:last-child{
+    width:700px;
+}
+
+#mainTable tr td span {
+   
+
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+#searchLine {
+    
+    
+    padding-bottom:20px;
+    padding-top:20px;
+   
+    width:900px;
+     
+}
+
+.deattach {
+    padding-top:5px !important;
+    height:50px;
+    position: fixed;
+    background-color:#fff;
+    top:0px;
+    border-bottom:1px dashed #808080;
+    border-left:1px dashed #808080;
+    border-right:1px dashed #808080;
+}
+
+
+.labelSearch {
+    float:left;
+    padding:6px;
+}
+
+
+
+#searchLine input:not([type=button]){
+    width:450px;
+    margin-right:10px;
+}
+#searchLine {
+    padding-left:100px;
+}
+
+#searchLine input {
+    float:left;
+    margin-right:2px;
+}
+
+h1#mainTitle {
+    
+}
+
+
+
+#outerContent {
+    width:900px;
+    margin:0 auto;
+}
+
+#content {
+    width:800px;
+    margin:0 auto;
+}
