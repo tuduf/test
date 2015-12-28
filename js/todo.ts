@@ -19,7 +19,7 @@ class TODOListSaver {
         try {
             localStorage.setItem("item", JSON.stringify(list.toArray()));
         } catch (e) {
-            alert(123);
+            /* we are not able to save*/
         }
     }
 

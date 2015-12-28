@@ -14,7 +14,6 @@ var TODOListSaver = (function () {
             localStorage.setItem("item", JSON.stringify(list.toArray()));
         }
         catch (e) {
-            alert(123);
         }
     };
     TODOListSaver.prototype.load = function () {
