@@ -55,7 +55,7 @@ function removeClass(element, className) {
             element.classList.remove(className);
         }
         catch (e) {
-            element.className = element.className.replace(className, "");
+            element.className = element.className.split(className).join("");
         }
     }
 }
